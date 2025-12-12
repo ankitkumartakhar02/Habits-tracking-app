@@ -12,7 +12,7 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [themeName, setThemeName] = useState(() => {
-    return localStorage.getItem('dhabits-theme') || 'Cyberpunk Cyan';
+    return localStorage.getItem('dhabits-theme') || 'Fresh Mint';
   });
 
   useEffect(() => {

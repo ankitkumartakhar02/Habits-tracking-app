@@ -1,12 +1,15 @@
 
+
 import { useState, useEffect, useRef } from 'react';
 
 const easeOutExpo = (t: number) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t));
 
 export const useCountUp = (end: number, duration = 1500) => {
   const [count, setCount] = useState(0);
-  const frameRef = useRef<number>();
-  const startTimeRef = useRef<number>();
+  // Fix: Initialize useRef with an argument to fix "Expected 1 arguments, but got 0" error.
+  const frameRef = useRef<number | undefined>(undefined);
+  // Fix: Initialize useRef with an argument to fix "Expected 1 arguments, but got 0" error.
+  const startTimeRef = useRef<number | undefined>(undefined);
 
   useEffect(() => {
     const animate = (timestamp: number) => {

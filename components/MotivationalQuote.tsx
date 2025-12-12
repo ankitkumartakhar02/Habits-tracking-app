@@ -24,16 +24,16 @@ const MotivationalQuote: React.FC = () => {
   }, []);
 
   return (
-    <div className="bg-black/20 backdrop-blur-xl rounded-2xl p-6 border border-white/10 shadow-lg animate-fade-in" style={{animationDelay: '200ms'}}>
-      <h3 className="text-lg font-semibold text-slate-300 mb-2">Mind Boost</h3>
+    <div className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-lg animate-fade-in" style={{animationDelay: '200ms'}}>
+      <h3 className="text-lg font-semibold text-slate-600 mb-2 tracking-tight">Mind Boost</h3>
       {loading ? (
         <div className="animate-pulse space-y-2">
-            <div className="h-4 bg-slate-700/50 rounded w-5/6"></div>
-            <div className="h-4 bg-slate-700/50 rounded w-3/4"></div>
+            <div className="h-4 bg-slate-200 rounded w-5/6"></div>
+            <div className="h-4 bg-slate-200 rounded w-3/4"></div>
         </div>
       ) : (
         <blockquote className="border-l-4 border-[var(--color-accent)] pl-4">
-          <p className="text-slate-200 italic">"{quote}"</p>
+          <p className="text-slate-600 italic">"{quote}"</p>
         </blockquote>
       )}
     </div>

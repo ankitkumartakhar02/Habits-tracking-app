@@ -9,6 +9,7 @@ export interface Habit {
 export interface HabitWithStats extends Habit {
   isCompletedToday: boolean;
   streak: number;
+  isLongestStreak: boolean;
 }
 
 export interface WeeklyChartData {
@@ -36,4 +37,9 @@ export interface Theme {
     completedTo: string;
     completedRing: string;
   };
+}
+
+export interface HeatmapData {
+    date: string;
+    count: number;
 }
