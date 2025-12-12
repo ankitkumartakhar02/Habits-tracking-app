@@ -16,3 +16,24 @@ export interface WeeklyChartData {
   date: string; // 'YYYY-MM-DD'
   completions: number;
 }
+
+export interface User {
+  id: string;
+  name: string;
+  avatarUrl: string;
+}
+
+export interface Theme {
+  name: string;
+  colors: {
+    primary: string;
+    gradientFrom: string;
+    gradientVia: string;
+    gradientTo: string;
+    accent: string;
+    accentDark: string;
+    completedFrom: string;
+    completedTo: string;
+    completedRing: string;
+  };
+}

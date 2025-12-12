@@ -11,7 +11,7 @@ interface StatsDashboardProps {
 
 const AnimatedNumber: React.FC<{ value: number }> = ({ value }) => {
     const count = useCountUp(value);
-    return <p className="text-3xl font-bold text-cyan-400">{count}</p>;
+    return <p className="text-3xl font-bold text-[rgb(var(--color-primary))]">{count}</p>;
 }
 
 const StatsDashboard: React.FC<StatsDashboardProps> = ({ weeklyChartData, totalHabits }) => {
@@ -19,15 +19,15 @@ const StatsDashboard: React.FC<StatsDashboardProps> = ({ weeklyChartData, totalH
   const totalCompletions = weeklyChartData.reduce((sum, day) => sum + day.completions, 0);
 
   return (
-    <div className="bg-slate-800/50 rounded-xl p-6 backdrop-blur-sm border border-slate-700 space-y-6 animate-fade-in" style={{animationDelay: '400ms'}}>
-      <h2 className="text-2xl font-bold text-cyan-400">Your Progress</h2>
+    <div className="bg-black/20 backdrop-blur-xl rounded-2xl p-6 border border-white/10 shadow-lg space-y-6 animate-fade-in" style={{animationDelay: '400ms'}}>
+      <h2 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[var(--color-gradient-from)] via-[var(--color-gradient-via)] to-[var(--color-gradient-to)]">Your Progress</h2>
       
       <div className="grid grid-cols-2 gap-4 text-center">
-        <div className="bg-slate-700/50 p-4 rounded-lg">
+        <div className="bg-black/20 p-4 rounded-lg border border-white/10">
           <AnimatedNumber value={totalHabits} />
           <p className="text-sm text-slate-400">Active Habits</p>
         </div>
-        <div className="bg-slate-700/50 p-4 rounded-lg">
+        <div className="bg-black/20 p-4 rounded-lg border border-white/10">
           <AnimatedNumber value={totalCompletions} />
           <p className="text-sm text-slate-400">Week's Tasks</p>
         </div>
@@ -38,19 +38,20 @@ const StatsDashboard: React.FC<StatsDashboardProps> = ({ weeklyChartData, totalH
         {totalHabits > 0 ? (
           <ResponsiveContainer width="100%" height={200}>
             <BarChart data={weeklyChartData} margin={{ top: 5, right: 20, left: -10, bottom: 5 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#475569" />
+              <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
               <XAxis dataKey="name" stroke="#94a3b8" fontSize={12} />
               <YAxis allowDecimals={false} stroke="#94a3b8" fontSize={12}/>
               <Tooltip
                 contentStyle={{
-                  backgroundColor: '#1e293b',
-                  borderColor: '#334155',
+                  backgroundColor: 'rgba(0,0,0,0.5)',
+                  backdropFilter: 'blur(10px)',
+                  borderColor: 'rgba(255,255,255,0.2)',
                   color: '#e2e8f0',
                   borderRadius: '0.5rem'
                 }}
-                cursor={{ fill: 'rgba(71, 85, 105, 0.5)' }}
+                cursor={{ fill: 'rgba(255,255,255,0.1)' }}
               />
-              <Bar dataKey="completions" fill="#22d3ee" radius={[4, 4, 0, 0]} animationDuration={800}/>
+              <Bar dataKey="completions" fill="var(--color-accent)" radius={[4, 4, 0, 0]} animationDuration={800}/>
             </BarChart>
           </ResponsiveContainer>
         ) : (

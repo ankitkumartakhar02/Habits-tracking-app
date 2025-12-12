@@ -5,14 +5,26 @@
     <meta charset="UTF--8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Zenith Habits</title>
+    <title>DHabits Tracker</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+      :root {
+        --color-primary: 34 211 238; /* cyan-400 */
+        --color-gradient-from: #a78bfa; /* violet-400 */
+        --color-gradient-via: #38bdf8; /* cyan-400 */
+        --color-gradient-to: #4ade80; /* emerald-400 */
+        --color-accent: #22d3ee; /* cyan-500 */
+        --color-accent-dark: #06b6d4; /* cyan-600 */
+        --color-completed-from: rgba(22, 163, 74, 0.1); /* green-600/10 */
+        --color-completed-to: rgba(5, 150, 105, 0.1); /* emerald-600/10 */
+        --color-completed-ring: rgba(52, 211, 153, 0.5); /* emerald-400/50 */
+      }
       body {
         font-family: 'Inter', sans-serif;
+        overflow: hidden; /* Prevent scrollbars from background */
       }
       @keyframes slideDown {
         from {
@@ -29,15 +41,13 @@
         from { opacity: 0; }
         to { opacity: 1; }
       }
-
-      @keyframes rotate {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
-      }
-
-      @keyframes pulse {
-        0%, 100% { box-shadow: 0 0 15px 5px rgba(34, 211, 238, 0.4); }
-        50% { box-shadow: 0 0 30px 10px rgba(34, 211, 238, 0.6); }
+      
+      @keyframes move-aurora {
+        0% { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
+        25% { transform: translate(-50%, -50%) rotate(90deg) scale(1.2); }
+        50% { transform: translate(-50%, -50%) rotate(180deg) scale(1); }
+        75% { transform: translate(-50%, -50%) rotate(270deg) scale(1.2); }
+        100% { transform: translate(-50%, -50%) rotate(360deg) scale(1); }
       }
 
       .animate-slide-down {
@@ -46,15 +56,6 @@
 
       .animate-fade-in {
           animation: fadeIn 0.5s ease-out forwards;
-      }
-
-      .orb {
-          animation-name: pulse;
-          animation-timing-function: ease-in-out;
-          animation-iteration-count: infinite;
-      }
-      .orb-inner {
-          animation: rotate 20s linear infinite;
       }
     </style>
   <script type="importmap">

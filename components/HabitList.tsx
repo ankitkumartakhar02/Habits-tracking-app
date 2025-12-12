@@ -13,12 +13,13 @@ interface HabitListProps {
 const HabitList: React.FC<HabitListProps> = ({ habits, onToggleHabit, onDeleteHabit, today }) => {
   return (
     <div className="space-y-3">
-      {habits.map(habit => (
+      {habits.map((habit, index) => (
         <HabitItem 
           key={habit.id} 
           habit={habit} 
           onToggle={() => onToggleHabit(habit.id, today)}
           onDelete={() => onDeleteHabit(habit.id)}
+          index={index}
         />
       ))}
     </div>
